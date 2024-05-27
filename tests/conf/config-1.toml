@@ -1,0 +1,44 @@
+local = "node_1"
+leader = "node_1"
+role = "leader"  # leader or generator
+privKey = "WEqcv2F53htwLpNa4FPWuGcKt7GMZYT4LWE9OZuRGKM="
+blsThreshold = 2
+rpcChanLen = 10
+grpcServerPort = "0.0.0.0:9001"
+# Retry 'connMaxAttempts' times for creating rpc connection, delay 'retryDelay' between two attempts
+connMaxAttempts = 3
+retryDelay = "1s"
+#retryUnconnectedNodeDuration = "3s"
+timeoutDuration = "2s"
+discardDuration = "5h"
+# if leader is restarted with running generators, the seq is backward and db record not worked, could set lastDiscardSeq to a bigger num(>= seq in generator)
+lastDiscardSeq = -1
+randomNumbersPoolUpperLimit = 10  # only leader need
+
+# Log Level
+logLevel = "debug"
+
+# Web Server
+apiServiceAddress = ":8080"
+
+# SDK
+enableSDK = true
+exposedRpcAddress = ":8081"
+
+[ethConfig]
+must = false
+chainUrl = "http://127.0.0.1:8545"
+chainID = 31337
+contractAddress = "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1"
+privKey = "ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+
+
+[[nodeInfos]]
+nodeID = "node_2"
+url = "localhost:9002"
+pubKey = "YBOQS5J342N9BwCWcvtme7v+xLE66PIBOYBsHJpom8PldLqFa7GoIWbaHBzQIXwl/Rc8hp5sz4DHx0A4tlDrTeyhP1AxC2jxLtxdcQAcJuElM096wUi3SHRlBkWHeLe0GxbClkVLAHFw3w2igcfFtjF8SVG0sAk3obur/4ogWFC/oVV0GTTeS4L/edNrBObIBgHGeE5PDOXTnQrStGV9vi3rbLEfECJk8W+A4HsWpCjwV7Xinm7VlS0yJUElA/rvkBY7KwIA2yvclH9xYcAlfGhbLwReESdaeLq58jVqQiuIQzlyZ8xbUyO1NfQtAb/sUAMgfCp/ARlqVNWsEBP/7IlPIDGJnoLhkIqryFdIJ05lDfY1J+pZB7xWjh0+/qE3FQ=="
+
+[[nodeInfos]]
+nodeID = "node_3"
+url = "localhost:9003"
+pubKey = "YAEDyEIIv0vmDrfkALVk0jKM1GVXJql8Es29zUBcN6B4Je/zhC8oN9tRRCODU8dn/BiJs7sq2HH/ABUuV27dLaCj//Ub4HSil1pGk/08VzmWcoyZN0FL0UqQNmTvMyl1YhNhbQQs+9Aa447AoO7O4LN8ioRU/wmq75myvcTlwW6taD+Tg7gQswglbnjgCYQGbhm3O1T0e+uxnIZlMTyQXKAN69A5mLv3JFgXR6CwTI9Yoz7O83m7NOBRXeXMKlkGFAmqLI9gpxYa6Dhz3qBkcwJhdUakR7uBfrHwew8ghQvKU5fno9xN1rR5inKHlQ/kKws73soP02AXQaUyD5bTeR/kUpwJ3RsE5hoEUuZpha0PLNq7YIj8PYjHlaBiZD5hfw=="

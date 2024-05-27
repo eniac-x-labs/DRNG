@@ -1,0 +1,165 @@
+definitions:
+  api.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  common.PoolElem:
+    properties:
+      randomNum:
+        type: integer
+      reqId:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /getGeneratorsNum:
+    get:
+      consumes:
+      - application/json
+      description: get the number of generator nodes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: number of generators
+          schema:
+            type: integer
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle GetGeneratorsNum request, return result or error meessage
+  /getLastDiscardSeq:
+    get:
+      consumes:
+      - application/json
+      description: get the last seq rng node has discarded
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: last seq has discarded
+          schema:
+            type: integer
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle GetLastDiscardSeq request, return result or error meessage
+  /getLatestProcessingSeq:
+    get:
+      consumes:
+      - application/json
+      description: get the latest seq rng node is processing
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: latest seq rng node process
+          schema:
+            type: integer
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle GetLatestProcessingSeq request, return result or error meessage
+  /getMultiRandomNumbers/{num}:
+    get:
+      consumes:
+      - application/json
+      description: get and return specified number of random numbers from leader's
+        randomNumbersPool, if pool does not have enough numbers, maybe start a generate
+        round
+      parameters:
+      - description: number of random numbers requested
+        in: path
+        minimum: 1
+        name: num
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: random number and corresponding reqID
+          schema:
+            items:
+              $ref: '#/definitions/common.PoolElem'
+            type: array
+        "400":
+          description: Not getting expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle multi random numbers request, return results or error meessage
+  /getPoolLatestSeq:
+    get:
+      consumes:
+      - application/json
+      description: get the latest seq in random numbers pool
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: latest seq in pool
+          schema:
+            type: integer
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle GetPoolLatestSeq request, return result or error meessage
+  /getPoolUpperLimit:
+    get:
+      consumes:
+      - application/json
+      description: get random numbers pool's upper limit which is set by config
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: random numbers' pool upper limit
+          schema:
+            type: integer
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle GetPoolUpperLimit request, return result or error meessage
+  /getSingleRandomNumber:
+    get:
+      consumes:
+      - application/json
+      description: get and return one random number from leader's randomNumbersPool,
+        if pool is empty, maybe start a generate round
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: random number and corresponding reqID
+          schema:
+            $ref: '#/definitions/common.PoolElem'
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Handle single random number request, return result or error meessage
+  /getSizeofPool:
+    get:
+      consumes:
+      - application/json
+      description: get the random numbers pool size
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: random numbers pool size
+          schema:
+            type: integer
+        "400":
+          description: Not get expected results
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: GetSizeofPool request, return result or error meessage
+swagger: "2.0"

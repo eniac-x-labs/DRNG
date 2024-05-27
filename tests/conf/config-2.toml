@@ -1,0 +1,41 @@
+local = "node_2"
+leader = "node_1"
+role = "generator"  # leader or generator
+privKey = "AbhvHT+f4gCMU+vV5q9DDcs+MPKkUEVmP+TnvvDhS70="
+blsThreshold = 2
+rpcChanLen = 10
+grpcServerPort = "0.0.0.0:9002"
+connMaxAttempts = 3
+retryDelay = "1s"
+#retryUnconnectedNodeDuration = "3s"
+timeoutDuration = "2s"
+discardDuration = "3h"
+lastDiscardSeq = -1
+randomNumbersPoolUpperLimit = 10  # only leader need
+
+# log level
+logLevel = "debug"
+
+# web server
+apiServiceAddress = ":8080"
+
+# sdk
+enableSDK = true
+exposedRpcAddress = ""
+
+[ethConfig]
+must = false
+chainUrl = "http://127.0.0.1:8545"
+chainID = 31337
+contractAddress = "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1"
+privKey = "59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d"
+
+[[nodeInfos]]
+nodeID = "node_1"
+url = "localhost:9001"
+pubKey = "YAfU2MY2lZeboKgF+pOKjjMID4Lp0hQj6ECQxC6PEn4vgLXiCeizzhb9aB+Jw9nMHQDLQVBICOFCDelXuIbfH9ug2LKtaY6QzAHJqbEkl5UJ0Rcv61huYSPnNn3wuGSXegASmcZpKwXOfdFocHubO8viRu6gDDSYCFzdGDpKA/7hmAOolxuP88iCJAdGocMcPA2FZzwJYeTeKzNYPqqQyAm16y2fGms10Y+77rmGsZXjB2nymV/SIFyiyF5ktqALLQKziAUNBTZcaNqssjbYwwH0oZ/I1UIQ60+0Aw063ha2v5dUtAmWdn1oi44ucAqqMxUJFgUmvYKWWTdzjwKtHWwFvbziccX+lAVPv/p6mZ0gATQB9kyJXn5JS3c28HuTvA=="
+
+[[nodeInfos]]
+nodeID = "node_3"
+url = "localhost:9003"
+pubKey = "YAEDyEIIv0vmDrfkALVk0jKM1GVXJql8Es29zUBcN6B4Je/zhC8oN9tRRCODU8dn/BiJs7sq2HH/ABUuV27dLaCj//Ub4HSil1pGk/08VzmWcoyZN0FL0UqQNmTvMyl1YhNhbQQs+9Aa447AoO7O4LN8ioRU/wmq75myvcTlwW6taD+Tg7gQswglbnjgCYQGbhm3O1T0e+uxnIZlMTyQXKAN69A5mLv3JFgXR6CwTI9Yoz7O83m7NOBRXeXMKlkGFAmqLI9gpxYa6Dhz3qBkcwJhdUakR7uBfrHwew8ghQvKU5fno9xN1rR5inKHlQ/kKws73soP02AXQaUyD5bTeR/kUpwJ3RsE5hoEUuZpha0PLNq7YIj8PYjHlaBiZD5hfw=="
