@@ -1,0 +1,5 @@
+*.exec
+cmd/
+DRNG
+bin/
+db/meta*

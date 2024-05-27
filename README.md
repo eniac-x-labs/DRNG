@@ -1,2 +1,1 @@
-# DRNG
-decentralised-random-numbers-generator
+DRNG - Dicentralized Random Number Gernerator
