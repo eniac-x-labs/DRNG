@@ -1,0 +1,75 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+option go_package = "./;proto";
+package proto;
+// cd this dir then run cmd as next line
+// protoc --gofast_out=. grpc.proto
+
+message MetaData{
+  string leader = 1;
+  int64 seqNum = 2;
+  string reqID = 3;
+  bytes timeout = 4;
+  bytes sig = 5; // leader.Sign(hash({leaderAddr, seqNum, reqID, timeout}))
+}
+
+// client -> leader
+message RequestMessage {
+  int64 seqNum = 1;
+  string reqID = 2;
+  bytes timeout = 3;
+}
+
+// leader->generator || generator->generator || generator->leader
+message TransportMessage{
+  string version = 1;
+  string msgType = 2; // Start/Single/Collection/Merged
+  bytes data = 3; // StartNewRoundMessage/SingleRandMessage/CollectionRandMessage/MergedRandMessage
+
+}
+// TransportMessage.data, leader -> generator
+message StartNewRoundMessage {
+  MetaData metaData = 1;
+  string from = 2;
+}
+
+// TransportMessage.data, generator -> generator
+message SingleRandMessage {
+  MetaData metaData = 1;
+  string from = 2;
+  uint64 randomNum = 3;
+  bytes sig = 4;
+}
+
+// TransportMessage.data, generator -> leader
+message CollectionRandMessage {
+  MetaData metaData = 1;
+  string from = 2;
+  map<string, uint64> collectionRandomNumbers = 3; // node:randNum
+  bytes sig = 4;
+  bytes sigPlaintext = 5;
+}
+
+// TransportMessage.data, leader -> contract
+message MergedRandMessage {
+  MetaData metaData = 1;
+  string from = 2;
+  repeated uint64 mergedRandomNumbers = 3;
+  bytes sig = 4;
+}
+
+message UnaryResponse {
+  string from = 1;
+  string reqID = 2;
+  int64 seqNum = 3;
+  string message = 4;
+}
+
+service RandomNumberGenerator {
+  rpc RequestRandomNumber(google.protobuf.Empty) returns (UnaryResponse);
+  rpc SendInternalMessage(TransportMessage) returns (UnaryResponse);
+  //  rpc RequestRandomNumber(RequestMessage) returns (UnaryResponse);
+  //  rpc SendSingleRandomNumber(SingleRandMessage) returns (UnaryResponse);
+  //  rpc SendCollectionRandomNumbers(CollectionRandMessage) returns (UnaryResponse);
+  //  rpc SendMergedRandomNumbers(MergedRandMessage) returns(UnaryResponse);
+}

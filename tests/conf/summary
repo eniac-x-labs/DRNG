@@ -1,0 +1,14 @@
+[[nodeInfo]]
+nodeID = "node_1"
+url = "localhost:9001"
+pubKey = "YAfU2MY2lZeboKgF+pOKjjMID4Lp0hQj6ECQxC6PEn4vgLXiCeizzhb9aB+Jw9nMHQDLQVBICOFCDelXuIbfH9ug2LKtaY6QzAHJqbEkl5UJ0Rcv61huYSPnNn3wuGSXegASmcZpKwXOfdFocHubO8viRu6gDDSYCFzdGDpKA/7hmAOolxuP88iCJAdGocMcPA2FZzwJYeTeKzNYPqqQyAm16y2fGms10Y+77rmGsZXjB2nymV/SIFyiyF5ktqALLQKziAUNBTZcaNqssjbYwwH0oZ/I1UIQ60+0Aw063ha2v5dUtAmWdn1oi44ucAqqMxUJFgUmvYKWWTdzjwKtHWwFvbziccX+lAVPv/p6mZ0gATQB9kyJXn5JS3c28HuTvA=="
+
+[[nodeInfo]]
+nodeID = "node_2"
+url = "localhost:9002"
+pubKey = "YBOQS5J342N9BwCWcvtme7v+xLE66PIBOYBsHJpom8PldLqFa7GoIWbaHBzQIXwl/Rc8hp5sz4DHx0A4tlDrTeyhP1AxC2jxLtxdcQAcJuElM096wUi3SHRlBkWHeLe0GxbClkVLAHFw3w2igcfFtjF8SVG0sAk3obur/4ogWFC/oVV0GTTeS4L/edNrBObIBgHGeE5PDOXTnQrStGV9vi3rbLEfECJk8W+A4HsWpCjwV7Xinm7VlS0yJUElA/rvkBY7KwIA2yvclH9xYcAlfGhbLwReESdaeLq58jVqQiuIQzlyZ8xbUyO1NfQtAb/sUAMgfCp/ARlqVNWsEBP/7IlPIDGJnoLhkIqryFdIJ05lDfY1J+pZB7xWjh0+/qE3FQ=="
+
+[[nodeInfo]]
+nodeID = "node_3"
+url = "localhost:9003"
+pubKey = "YAEDyEIIv0vmDrfkALVk0jKM1GVXJql8Es29zUBcN6B4Je/zhC8oN9tRRCODU8dn/BiJs7sq2HH/ABUuV27dLaCj//Ub4HSil1pGk/08VzmWcoyZN0FL0UqQNmTvMyl1YhNhbQQs+9Aa447AoO7O4LN8ioRU/wmq75myvcTlwW6taD+Tg7gQswglbnjgCYQGbhm3O1T0e+uxnIZlMTyQXKAN69A5mLv3JFgXR6CwTI9Yoz7O83m7NOBRXeXMKlkGFAmqLI9gpxYa6Dhz3qBkcwJhdUakR7uBfrHwew8ghQvKU5fno9xN1rR5inKHlQ/kKws73soP02AXQaUyD5bTeR/kUpwJ3RsE5hoEUuZpha0PLNq7YIj8PYjHlaBiZD5hfw=="
