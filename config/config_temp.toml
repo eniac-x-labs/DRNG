@@ -5,7 +5,7 @@ leader = "node_1"
 # local node role "leader" or "generator"
 role = "leader"
 # local bls private key for bls signature
-privKey = "WEqcv2F53htwLpNa4FPWuGcKt7GMZYT4LWE9OZuRGKM="
+privKey = "="
 # the threshold number of collected signatures for aggregating
 blsThreshold = 2
 # the length of chan which is used to buffer and store requests to generate random numbers from the client to the leader.
@@ -20,12 +20,12 @@ retryDelay = "1s"
 # for a "generate random number" request, there is a timeout period, and the timeout request will be rejected at any stage.
 timeoutDuration = "2s"
 # the time between the start of a discard and the end of the last discard
-discardDuration = "5h"
+discardDuration = "10s"
 # if leader is restarted with running generators, the seq is backward and db record not worked, could set lastDiscardSeq to a bigger num(>= seq in generator)
 lastDiscardSeq = -1
 # randomNumbersPool stores random numbers can be returned to client,
 # if the calculated data with pool size exceeds this limit, new random numbers will no longer be generated.
-randomNumbersPoolUpperLimit = 10  # only leader need
+randomNumbersPoolUpperLimit = 20  # only leader need
 
 # Log Level
 logLevel = "debug"
