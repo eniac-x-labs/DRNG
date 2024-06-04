@@ -46,36 +46,39 @@ func main() {
 	log.Debug("get config", "detail", conf)
 
 	log.Info("RNG is trying starting")
+	var webServer *http.Server
 	if conf.Role.String() == common.GENERATORSTR {
 		rng.Start()
 	} else { // Leader
 		go rng.Start()
 		if conf.EnableSDK && len(conf.ExposedRpcAddress) != 0 {
 			log.Info("starting exposed rpc server for sdk")
-			go _rpc.NewAndStartDRNGRpcServer(conf.ExposedRpcAddress, rng)
+			go _rpc.NewAndStartDRNGRpcServer(ctx, conf.ExposedRpcAddress, rng)
 		}
 
 		// =================================== go-gin ===========================================
 		// ================================= web server =========================================
 		log.Info("preparing DRNG web server")
-		webServer := api.PrepareWebServer(conf.ApiServiceAddress, rng)
+		webServer = api.PrepareWebServer(conf.ApiServiceAddress, rng)
 		go func() {
 			if err = webServer.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 				fmt.Println("Error starting server:", err)
 			}
 		}()
 		log.Info("DRNG web server started successfully")
+	}
 
-		quit := make(chan os.Signal, 1)
-		signal.Notify(quit, os.Interrupt)
-		<-quit
-		fmt.Println("Shutting down server...")
-		cancel()
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, os.Interrupt)
+	<-quit
+	fmt.Println("Shutting down server...")
+	cancel()
 
+	if webServer != nil {
 		if err := webServer.Shutdown(ctx); err != nil {
 			fmt.Println("Error shutting down server:", err)
 		}
-
-		fmt.Println("Server gracefully stopped")
 	}
+
+	fmt.Println("Server gracefully stopped")
 }

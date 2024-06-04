@@ -229,8 +229,6 @@ func (n *RNG) Start() error {
 
 	n.wg.Add(1)
 	n.run()
-	//log.Debug("starting StartRNGRPCServer", "url", "localhost:6666")
-	//StartRNGRPCServer(n.ctx, "localhost", 6666, n)
 	n.wg.Wait()
 
 	return nil
