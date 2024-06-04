@@ -48,6 +48,7 @@ func NewAndStartDRNGRpcServer(address string, rng *core.RNG) {
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
 		log.Error("RpcServer Listen failed", "err", err, "address", address)
+		return
 	}
 	log.Debug("RpcServer listen address finished", "address", address)
 
