@@ -88,7 +88,7 @@ func NewRNG(ctx context.Context, conf *_conf.Config) (*RNG, error) {
 	var pendingSeq atomic.Int64
 	pendingSeqInt64, err := db.GetPendingSeq()
 	if err != nil {
-		log.Error("get pendingSeq from level db failed, use default pendingSeq 0", "err", err)
+		log.Warn("get pendingSeq from level db failed, use default pendingSeq 0", "err", err)
 	} else {
 		log.Debug("get pendingSeq from level db", "pendingSeq", pendingSeqInt64)
 		pendingSeq.Store(pendingSeqInt64)

@@ -23,9 +23,9 @@ func (n *RNG) leaderDiscard() {
 			seq := n.lastDiscardSeq + 1
 
 			n.leaderRecords.Lock()
-			log.Warn("进for前")
+			//log.Warn("进for前")
 
-			log.Debug("看全部", "all", n.leaderRecords.seqTimeoutQueue.Queue)
+			//log.Debug("看全部", "all", n.leaderRecords.seqTimeoutQueue.Queue)
 			var ti *time.Time
 			for {
 				if ti = n.leaderRecords.seqTimeoutQueue.FrontTime(); ti == nil {
@@ -45,7 +45,7 @@ func (n *RNG) leaderDiscard() {
 					break
 				}
 			}
-			log.Warn("break 了")
+			//log.Warn("break 了")
 
 			n.leaderRecords.Unlock()
 			timer.Reset(n.discardDuration)
