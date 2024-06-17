@@ -1,6 +1,7 @@
 package rpc
 
 import (
+	"context"
 	"net"
 	"net/rpc"
 
@@ -34,8 +35,7 @@ type DRNGRpcServer struct {
 	reviewer    core.Reviewer
 }
 
-func NewAndStartDRNGRpcServer(address string, rng *core.RNG) {
-	log.Error("SDK 1")
+func NewAndStartDRNGRpcServer(ctx context.Context, address string, rng *core.RNG) {
 	if err := rpc.Register(&DRNGRpcServer{
 		rng:         rng,
 		evilChecker: rng.EvilChecker,
@@ -53,12 +53,19 @@ func NewAndStartDRNGRpcServer(address string, rng *core.RNG) {
 	log.Debug("RpcServer listen address finished", "address", address)
 
 	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			log.Error("RpcServer listener.Accept failed", "err", err)
+		select {
+		case <-ctx.Done():
+			listener.Close()
+			return
+		default:
+			conn, err := listener.Accept()
+			if err != nil {
+				log.Error("RpcServer listener.Accept failed", "err", err)
+			}
+
+			go rpc.ServeConn(conn)
 		}
 
-		go rpc.ServeConn(conn)
 	}
 }
 
