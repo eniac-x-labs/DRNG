@@ -9,7 +9,6 @@ WORKDIR /app
 
 RUN go mod download
 
-# build Nekoswap_runes with the shared go.mod & go.sum files
 COPY . /app/DRNG
 
 WORKDIR /app/DRNG
