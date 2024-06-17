@@ -4,3 +4,4 @@ DRNG
 bin/
 db/meta*
 .idea
+.DS_Store
