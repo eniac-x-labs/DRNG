@@ -3,3 +3,4 @@ cmd/
 DRNG
 bin/
 db/meta*
+.idea
